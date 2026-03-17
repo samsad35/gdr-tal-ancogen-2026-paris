@@ -55,15 +55,19 @@ $$ \global\def\myzarec#1{{\color{blue}\hat{\mathbf{x}}\_{q,~#1}^{(f)}}} $$
 $$ \global\def\xaudioqrec{{\color{red}\hat{\mathbf{x}}^{(a)}_q}} $$
 $$ \global\def\xfactorqrec{{\color{blue}\hat{\mathbf{x}}^{(f)}_q}} $$
 
-.italic[GDR TAL: « Traitement Automatique des Langues et Interprétabilité », Paris]
+
+
+.italic[GDR TAL: « Traitement Automatique des Langues et Interprétabilité », Paris 2026]
 
 .center.boite-90[
 # $\texttt{AnCoGen}$: <u>An</u>alysis, <u>Co</u>ntrol and <u>Gen</u>eration of Speech with a Masked Autoencoder
 ]
 
-.center[.bold[Samir Sadok$^1$], Simon Leglaive, Laurent Girin, Gaël Richard, Xavier Alameda-Pineda]
+.center[.bold[<u>Samir Sadok</u>], Simon Leglaive, Laurent Girin, Gaël Richard, Xavier Alameda-Pineda]
 
-.center.italic[Accepted at ICASSP 2025]
+.small.center.italic[*(ICASSP 2025)*]
+<br>
+.center.width-10[![](images/favicon-g.png)]
 
 
 ---
@@ -110,6 +114,10 @@ Xavier Alameda-Pineda<sup>.small[4]</sup>]
 .kol-1-1[
 .small.center[<sup>4</sup> Inria, Univ. Grenoble Alpes, CNRS, LJK, France]
 ]
+]
+
+.grid[
+.credit[Sadok, S., Leglaive, S., Girin, L., Richard, G., & Alameda-Pineda, X. (2025, April). Ancogen: Analysis, control and generation of speech with a masked autoencoder. In ICASSP 2025-2025 IEEE ICASSP.]
 ]
 
 ???
@@ -165,7 +173,7 @@ We introduce AnCoGen for .bold[analyzing], .bold[controlling], and .bold[generat
 ]
 
 
-AnCoGen learns a bidirectional mapping between a Mel-spectrogram and the speech attributes, hence leading to a **single/inified model** for the analysis and the resynthesis of speech.
+AnCoGen learns a bidirectional mapping between a Mel-spectrogram and the speech attributes, hence leading to a *single/unified model* for the analysis and the resynthesis of speech.
 
 ???
 - AnCoGen learns a bidirectional mapping between a Mel-spectrogram and the speech attributes, hence leading to a single model for the analysis and the
@@ -221,12 +229,12 @@ The Mel-spectrograms are computed using the short-time Fourier transform.
 
 .small.left[
 .boite-gauche-rouge[
-$A\_1$:  the speech signal **linguistic content** (HuBERT model); <br>
-$A\_2$: The **pitch** contour $f\_0$ (in Hz), using CREPE;<br>
-$A\_3$: The **loudness**, here defined as the root mean square (RMS) signal;<br>
-$A\_4$: The **speaker identity**, using Ecapa-tdnn model;<br>
-$A\_5$: The **signal-to-noise** ratio (SNR; in dB);<br>
-$A\_6$: The **clarity index** at 50 ms (C50; in dB);
+$A\_1$:  the speech signal *linguistic content* (HuBERT model); <br>
+$A\_2$: The *pitch* contour $f\_0$ (in Hz), using CREPE;<br>
+$A\_3$: The *loudness*, here defined as the root mean square (RMS) signal;<br>
+$A\_4$: The *speaker identity*, using Ecapa-tdnn model;<br>
+$A\_5$: The *signal-to-noise* ratio (SNR; in dB);<br>
+$A\_6$: The *clarity index* at 50 ms (C50; in dB);
 ]
 ]
 ]
@@ -301,8 +309,8 @@ class: middle
 
 .center.width-100[![](images/method/overall-3.svg)]
 
-- Training $\texttt{AnCoGen}$ is achieved by **randomly masking** the input sequences of mel-spectrogram and speech attributes tokens.
-- .bold[Coupled masking strategy:]  The masking ratio for these two speech representations is drawn randomly according to a **uniform distribution** on the 1-simplex.
+- Training $\texttt{AnCoGen}$ is achieved by *randomly masking* the input sequences of mel-spectrogram and speech attributes tokens.
+- .bold[Coupled masking strategy:]  The masking ratio for these two speech representations is drawn randomly according to a *uniform distribution* on the 1-simplex.
 
 ---
 exclude: true
@@ -338,10 +346,10 @@ class: middle
 
 .center.width-100[![](images/method/overall-4.svg)]
 
-- We use a **masked autoencoder (MAE)** .blue.small[(He et al., 2022)] model to learn a bidirectional mapping between a Mel-spectrogram and the speech attributes.
-- The model (encoder, decoder, codebooks and mask token) is trained by computing the **cross-entropy loss** between the predicted and ground-truth discrete tokens.
+- We use a *masked autoencoder (MAE)* .blue.small[(He et al., 2022)] model to learn a bidirectional mapping between a Mel-spectrogram and the speech attributes.
+- The model (encoder, decoder, codebooks and mask token) is trained by computing the *cross-entropy loss* between the predicted and ground-truth discrete tokens.
 
-.credit[He, et al (2022)]
+.credit[He, K., Chen, X., Xie, S., Li, Y., Dollár, P., & Girshick, R. (2022). Masked autoencoders are scalable vision learners. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition.]
 ---
 exclude: true
 ## Encoder-decoder architecture
@@ -709,13 +717,13 @@ class: middle
 ## Takeway
 
 $\texttt{AnCoGen}$ is masked modeling framework that unifies
-**analysis, generation, and control** of speech within a single model.
+.bold[*analysis, generation, and control*] of speech within a single model.
 
 It can:
 
-- .bold[Analyze] speech by disentangling pitch, loudness, identity, noise, and content.
-- .bold[Generate] natural speech from these extracted factors.
-- .bold[Control] speech characteristics through independent manipulation of these factors.
+- .bold[*Analyze*] speech by disentangling pitch, loudness, identity, noise, and content.
+- .bold[*Generate*] natural speech from these extracted factors.
+- .bold[*Control*] speech characteristics through independent manipulation of these factors.
 
 In short, $\texttt{AnCoGen}$ bridges analysis and synthesis, enabling interpretable and controllable speech generation.
 
